@@ -1,5 +1,3 @@
-#main.py
-
 import eventlet
 eventlet.monkey_patch()
 import time
@@ -11,7 +9,7 @@ from flask_socketio import SocketIO, emit, join_room, disconnect
 app = Flask(__name__)
 app.debug = True
 app.config['SECRET_KEY'] = 'secret!'
-socketio = SocketIO(app)
+socketio = SocketIO(app, engineio_logger=True)
 thread = None
 
 
@@ -21,7 +19,8 @@ def background_stuff():
         time.sleep(1)
         t = str(time.clock())
         print (t)
-        socketio.emit('message', {'data': 'This is data', 'time': t}, namespace='/test')
+        socketio.emit(
+            'message', {'data': 'This is data', 'time': t}, namespace='/test')
 
 
 @app.route('/')
@@ -32,9 +31,11 @@ def index():
         thread.start()
     return render_template('index.html')
 
+
 @socketio.on('my event', namespace='/test')
 def my_event(msg):
     print(msg['data'])
+
 
 @socketio.on('connect', namespace='/test')
 def test_connect():
