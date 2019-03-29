@@ -1,6 +1,10 @@
 # Demo-Flask-SocketIO
 
-Took some time to explore Flask-SocketIO from <a href="https://github.com/miguelgrinberg">Miguel Grinberg</a> 
+**UPDATED VERSION**
+
+**NOTE :** Below are original README version, I'm not affiliated with him
+
+Took some time to explore Flask-SocketIO from <a href="https://github.com/miguelgrinberg">Miguel Grinberg</a>
 
 Look for the blog post here: <a href="http://timmyreilly.azurewebsites.net/flask-socketio-and-more/">TimmyReilly.com</a>
 
