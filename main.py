@@ -27,8 +27,12 @@ def background_stuff():
 def index():
     global thread
     if thread is None:
-        thread = Thread(target=background_stuff)
-        thread.start()
+        # uncomment to use thread
+        # thread = Thread(target=background_stuff)
+        # thread.start()
+
+        # using socketio
+        thread = socketio.start_background_task(background_stuff)
     return render_template('index.html')
 
 
